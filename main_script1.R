@@ -189,7 +189,7 @@ results <- rbind(results_1, results_2, results_3,
 # Format output
 results_out <- data.frame(
   Index = paste0('"', 1:nrow(results), '"'),  # Quoted index
-  results[, c("Lambda", "Length", "Cost", "NumDisambigs", "N")]  # Make sure column names match
+  results[, c("C", "Length", "Cost", "NumDisambigs", "N")]  # Make sure column names match
 )
 
 # Define the custom header (space-separated, quoted)
