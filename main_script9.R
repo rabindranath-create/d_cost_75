@@ -41,7 +41,7 @@ cost <- 6
 for (i in 1:200) {
   set.seed(1000+i)
   obs_gen_para <- c(gamma = 0.3, d = 5, noPoints = 150, no_c = 75, no_o = 75)
-  result <- ACS_Alg_M(obs_gen_para, k = 4, lambda, cost)
+  result <- ACS_Alg_M(obs_gen_para, kei = 4, lambda, cost)
   
   results_6[i, ] <- list(
     Run = i,
@@ -73,7 +73,7 @@ cost <- 7
 for (i in 1:200) {
   set.seed(1200+i)
   obs_gen_para <- c(gamma = 0.3, d = 5, noPoints = 150, no_c = 75, no_o = 75)
-  result <- ACS_Alg_M(obs_gen_para, k = 4, lambda, cost)
+  result <- ACS_Alg_M(obs_gen_para, kei = 4, lambda, cost)
   
   results_7[i, ] <- list(
     Run = i,
@@ -103,7 +103,7 @@ cost <- 8
 for (i in 1:200) {
   set.seed(1400+i)
   obs_gen_para <- c(gamma = 0.3, d = 5, noPoints = 150, no_c = 75, no_o = 75)
-  result <- ACS_Alg_M(obs_gen_para, k = 4, lambda, cost)
+  result <- ACS_Alg_M(obs_gen_para, kei = 4, lambda, cost)
   
   results_8[i, ] <- list(
     Run = i,
@@ -134,7 +134,7 @@ cost <- 9
 for (i in 1:200) {
   set.seed(1600+i)
   obs_gen_para <- c(gamma = 0.3, d = 5, noPoints = 150, no_c = 75, no_o = 75)
-  result <- ACS_Alg_M(obs_gen_para, k = 4, lambda, cost)
+  result <- ACS_Alg_M(obs_gen_para, kei = 4, lambda, cost)
   
   results_9[i, ] <- list(
     Run = i,
