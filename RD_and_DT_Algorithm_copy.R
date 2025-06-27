@@ -245,7 +245,8 @@ Mix_gen <- function(gamma, d, noPoints, no_c, no_o, lambda, cost = 5){
   mypar <- list(beta = kappa, gamma = gamma, r = d) # r is the radius
   mo <- list(cif = "strauss", par = mypar, w = bgwin)
   ## with p=1, the initial points just get shifted, so there will be EXACTLY n.start points
-  mypp <- rmh(model = mo, start = list(n.start = rpois(1,noPoints)), control = list(nrep = 100000, p=1))
+  #mypp <- rmh(model = mo, start = list(n.start = rpois(1,noPoints)), control = list(nrep = 100000, p=1))
+  mypp <- rmh(model = mo, start = list(n.start = noPoints), control = list(nrep = 100000, p=1))
   prob <- rbeta(length(mypp$x),4 + lambda ,4 - lambda)
   status <- rep(1,length(mypp$x))
   ind <- sample(1:length(mypp$x),ceiling(length(mypp$x)*(no_c/noPoints)))
@@ -1496,8 +1497,7 @@ ACS_Alg_M <- function(obs_gen_para, kei, lambda, cost){
           df_edge_ed[which(Int_info[,obs_ind_temp]==1),3] <- Inf
         } else{
           # adjust based on false obstacle
-          df_edge_ed[which(Int_info[,obs_ind_temp]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp]==1),3]-
-            0.5*( obs_info[obs_ind_temp,3] + ( 1-obs_info[obs_ind_temp,4])^(-kei) ))
+          df_edge_ed[which(Int_info[,obs_ind_temp]==1),3] <- edge_length
           Int_info[which(Int_info[,obs_ind_temp]==1),obs_ind_temp] <- 0 
         }
       } else{
@@ -1513,8 +1513,7 @@ ACS_Alg_M <- function(obs_gen_para, kei, lambda, cost){
           df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3] <- Inf
         } else{
           # false obstacle
-          df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3]-
-            0.5*( obs_info[obs_ind_temp,3] + ( 1-obs_info[obs_ind_temp,4])^(-kei) ))
+          df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3] <- edge_length
           Int_info[which(Int_info[,obs_ind_temp2]==1),obs_ind_temp2] <- 0
         }
       }
